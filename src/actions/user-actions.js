@@ -12,5 +12,14 @@ export const editUser = (state) => ({
 
 export const search = (state) => ({
   type: actionTypes.search,
-  payload: state 
-})
+  payload: {
+    filtered: searchFilter(state),
+    value: state.value
+  } 
+});
+
+const searchFilter = state => {
+  return state.users.filter( user => {
+    return user.name.first.includes(state.value) && user
+  })
+};

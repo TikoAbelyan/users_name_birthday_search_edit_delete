@@ -25,17 +25,11 @@ export default ( state = {} , action ) => {
           })]
         };
       case actionTypes.search:
-        return {
-          ...state ,
-          users: [...action.payload.users.filter( user => {
-            if(user.name.first.includes(action.payload.value)) {
-              return user
-            }
-            else {
-              return null
-            }
-          })]
-        }
+      return {
+        ...state ,
+        filteredUsers: [...action.payload.filtered],
+        searchValue: action.payload.value
+      }
     default: 
       return state;
   }
